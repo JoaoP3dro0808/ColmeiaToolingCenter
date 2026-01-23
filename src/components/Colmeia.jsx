@@ -1,6 +1,8 @@
 import React from 'react';
 import Favo from './Favo';
 import logo from '../images/icon.png';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Home } from 'lucide-react';
 
 // Função para gerar coordenadas em espiral hexagonal
 const generateHexCoordinates = (relevance) => {
@@ -44,6 +46,9 @@ const generateHexCoordinates = (relevance) => {
 export default function Colmeia({ links }) {
   // Ordena os links por relevância
   const sortedLinks = [...links].sort((a, b) => a.relevance - b.relevance);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   
   // Gera coordenadas para cada favo
   const favos = sortedLinks.map((link, index) => {
@@ -75,6 +80,17 @@ export default function Colmeia({ links }) {
         <div className="absolute top-8 left-8">
             <img src={logo} alt="Logo" className="w-38 h-27.6 drop-shadow-lg" />
         </div>
+
+      {/* Botão Home */}
+        {!isHomePage && (
+          <button
+            onClick={() => navigate('/')}
+            className="absolute top-8 right-8 bg-gradient-to-br from-teal-600 to-teal-800 hover:from-teal-500 hover:to-teal-700 text-white p-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110"
+            aria-label="Voltar para Home"
+          >
+            <Home size={24} />
+          </button>
+        )}
     </div>
   );
 }

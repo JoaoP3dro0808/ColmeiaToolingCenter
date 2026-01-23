@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Favo({ link, title, relevance, x, y }) {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
   
   // Tamanho do hexágono
   const size = 120;
-  const gap = 12; // Espaço entre os hexágonos (ajuste esse valor!)
+  const gap = 12;
   
-  // Cálculo correto do spacing para hexágonos simétricos
-  const spacingX = size + gap; // Distância horizontal
-  const spacingY = (size + gap) * 0.866; // Distância vertical
+  const spacingX = size + gap;
+  const spacingY = (size + gap) * 0.866;
   
-  // Calcula a posição baseada nas coordenadas hexagonais
   const posX = x * spacingX + (y % 2) * (spacingX / 2);
   const posY = y * spacingY * 0.866;
   
-  // Cores baseadas na relevância (mais central = mais destaque)
   const getColor = () => {
     if (relevance === 0) return { from: '#1e8985', to: '#0f4c49'};
     if (relevance <= 2) return { from: '#2fa29d', to: '#14665f' };
@@ -25,12 +24,23 @@ export default function Favo({ link, title, relevance, x, y }) {
 
   const colors = getColor();
   
+  // Verifica se é rota interna
+  const isInternalRoute = link.startsWith('/');
+  
+  const handleClick = (e) => {
+    if (isInternalRoute) {
+      e.preventDefault();
+      navigate(link);
+    }
+  };
+  
   return (
     <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="absolute transition-all duration-300 group"
+      href={isInternalRoute ? undefined : link}
+      target={isInternalRoute ? undefined : "_blank"}
+      rel={isInternalRoute ? undefined : "noopener noreferrer"}
+      onClick={handleClick}
+      className="absolute transition-all duration-300 group cursor-pointer"
       style={{
         left: '50%',
         top: '50%',
@@ -40,7 +50,6 @@ export default function Favo({ link, title, relevance, x, y }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative">
-        {/* Hexágono usando clip-path */}
         <div
           className={`shadow-lg transition-all duration-300 ${
               isHovered ? 'shadow-2xl' : ''
@@ -53,7 +62,6 @@ export default function Favo({ link, title, relevance, x, y }) {
           }}
         />
         
-        {/* Conteúdo do favo */}
         <div
           className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm text-center px-2"
           style={{
@@ -63,7 +71,6 @@ export default function Favo({ link, title, relevance, x, y }) {
           <span className="drop-shadow-md">{title}</span>
         </div>
         
-        {/* Borda do hexágono no hover */}
         {isHovered && (
           <div
             className="absolute inset-0"

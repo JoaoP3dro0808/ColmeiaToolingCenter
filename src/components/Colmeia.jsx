@@ -1,5 +1,6 @@
 import React from 'react';
 import Favo from './Favo';
+import logo from '../images/icon.png';
 
 // Função para gerar coordenadas em espiral hexagonal
 const generateHexCoordinates = (relevance) => {
@@ -70,10 +71,10 @@ export default function Colmeia({ links }) {
         ))}
       </div>
       
-      {/* Título */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-white text-4xl font-bold drop-shadow-lg">
-        Tooling Center
-      </div>
+      {/* Logo */}
+        <div className="absolute top-8 left-8">
+            <img src={logo} alt="Logo" className="w-38 h-27.6 drop-shadow-lg" />
+        </div>
     </div>
   );
 }

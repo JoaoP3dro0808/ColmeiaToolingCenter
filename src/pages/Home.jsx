@@ -13,7 +13,12 @@ export default function Home() {
     { title: 'WorkON', link: 'https://rb-wam.bosch.com/WorkOnDashBoard/search/search.seam', relevance: 3 },
     { title: 'ToolCost 2026', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/aeb24f82-a87a-409d-8ef8-6ee59a78d922/ReportSection?experience=power-bi', relevance: 1 },
     { title: 'View Fabricação', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/d42f41cc-ef6d-49ef-82cd-8b32fce91b7f/ReportSection?experience=power-bi', relevance: 3},
-    { title: 'Eletrodo de prata', link: '/silverelectrode', relevance: 2 }
+    { title: 'Eletrodo de prata', link: '/silverelectrode', relevance: 2 },
+    { title: 'Solicitações', link: 'https://ctweb05.br.bosch.com/portalsegpat/Default', relevance: 4 },
+    { title: 'Acompanhamento Ordens', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/e854bd6d-f1d6-4d94-a828-e8bce5da4918/ReportSection?experience=power-bi', relevance: 3 },
+    { title: 'Dashboard Preset', link: 'https://ctweb03.br.bosch.com/ToolManagement/toolManagement/DashboardPreset/list', relevance: 2 },
+    { title: 'Carga Máquina', link: 'https://app.powerbi.com/groups/me/reports/59a8cb8e-a480-4095-9fe3-f2140705baab/ReportSection?ctid=0ae51e19-07c8-4e4b-bb6d-648ee58410f4&experience=power-bi', relevance: 3 },
+    
 ];
   
   return <Colmeia links={meusLinks} />;

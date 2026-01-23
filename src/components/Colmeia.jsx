@@ -54,7 +54,9 @@ export default function Colmeia({ links }) {
   });
   
   return (
-    <div className="relative w-full h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden" style={{
+      background: 'linear-gradient(to bottom right, #111827, #007BC0, #111827)'
+    }}>
       <div className="absolute inset-0">
         {favos.map((favo, index) => (
           <Favo

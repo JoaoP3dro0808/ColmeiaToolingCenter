@@ -17,11 +17,13 @@ export default function Favo({ link, title, relevance, x, y }) {
   
   // Cores baseadas na relevância (mais central = mais destaque)
   const getColor = () => {
-    if (relevance === 0) return 'from-yellow-400 to-orange-500';
-    if (relevance <= 2) return 'from-orange-400 to-red-500';
-    if (relevance <= 4) return 'from-blue-400 to-purple-500';
-    return 'from-gray-400 to-gray-600';
+    if (relevance === 0) return { from: '#1e8985', to: '#0f4c49'};
+    if (relevance <= 2) return { from: '#2fa29d', to: '#14665f' };
+    if (relevance <= 4) return { from: '#42bbb5', to: '#16756f' };
+    return { from: '#5dd4ce', to: '#18837E' };
   };
+
+  const colors = getColor();
   
   return (
     <a
@@ -40,13 +42,14 @@ export default function Favo({ link, title, relevance, x, y }) {
       <div className="relative">
         {/* Hexágono usando clip-path */}
         <div
-          className={`bg-gradient-to-br ${getColor()} shadow-lg transition-all duration-300 ${
-            isHovered ? 'shadow-2xl' : ''
+          className={`shadow-lg transition-all duration-300 ${
+              isHovered ? 'shadow-2xl' : ''
           }`}
           style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+              width: `${size}px`,
+              height: `${size}px`,
+              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+              background: `linear-gradient(to bottom right, ${colors.from}, ${colors.to})`
           }}
         />
         

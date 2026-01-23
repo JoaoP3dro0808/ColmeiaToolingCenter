@@ -5,7 +5,7 @@ export default function Favo({ link, title, relevance, x, y }) {
   
   // Tamanho do hexágono
   const size = 120;
-  const gap = 10; // Espaço entre os hexágonos (ajuste esse valor!)
+  const gap = 12; // Espaço entre os hexágonos (ajuste esse valor!)
   
   // Cálculo correto do spacing para hexágonos simétricos
   const spacingX = size + gap; // Distância horizontal

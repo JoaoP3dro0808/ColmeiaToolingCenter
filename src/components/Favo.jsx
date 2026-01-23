@@ -16,10 +16,10 @@ export default function Favo({ link, title, relevance, x, y }) {
   const posY = y * spacingY * 0.866;
   
   const getColor = () => {
-    if (relevance === 0) return { from: '#1e8985', to: '#0f4c49'};
-    if (relevance <= 2) return { from: '#2fa29d', to: '#14665f' };
-    if (relevance <= 4) return { from: '#42bbb5', to: '#16756f' };
-    return { from: '#5dd4ce', to: '#18837E' };
+    if (relevance === 0) return { from: '#0c7e74ff', to: '#134e4a' }; // Teal escuro (centro)
+    if (relevance <= 2) return { from: '#14b8a6', to: '#0f766e' }; // Teal médio
+    if (relevance <= 4) return { from: '#2dd4bf', to: '#14b8a6' }; // Teal claro
+    return { from: '#5eead4', to: '#2dd4bf' }; // Teal muito claro (periferia)
   };
 
   const colors = getColor();

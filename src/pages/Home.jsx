@@ -1,6 +1,6 @@
 import React from 'react';
 import Colmeia from '../components/Colmeia';
-import tool_icon from '../images/tool_icon.png'
+import tool_icon from '../images/tool_icon.png';
 
 export default function Home() {
   // Seus links aqui! Adicione quantos quiser
@@ -22,7 +22,9 @@ export default function Home() {
     { title: 'Carga Máquina', link: 'https://app.powerbi.com/groups/me/reports/59a8cb8e-a480-4095-9fe3-f2140705baab/ReportSection?ctid=0ae51e19-07c8-4e4b-bb6d-648ee58410f4&experience=power-bi', relevance: 3 },
     { title: 'MyBDLinks', link: 'https://bdweblaserviceslocations.bosch.com/MyBDLinksLA/home', relevance: 3 },
     { title: 'Cadastros VU', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/c11d4fe4-6dd1-49a9-a298-6b0b0359624b/055377c97f756e95fb6c?experience=power-bi', relevance: 1, color: { from: '#ecacffff', to: '#a400aaff' } },
-    // { title: 'Pasta', filePath: 'C:/Users/klj1ct/Downloads', relevance: 1 },
+    { title: 'Volume de Produção', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/310029bc-065d-4ce2-b725-7cb9f913fe68/ReportSection?experience=power-bi', relevance: 2 },
+    { title: 'Turnover Health', filePath: 'S:/TEC/Technical_Function/1.1.Process_Develop_Tools/03.Shared/01.Process_Development/GD/02_Atividades em andamento/João Klippel/TurnoverHealth.pbix', relevance: 2 },
+    { title: 'Calendário', link: '/calendar', relevance: 5 },
 ];
   
   return <Colmeia links={meusLinks} />;

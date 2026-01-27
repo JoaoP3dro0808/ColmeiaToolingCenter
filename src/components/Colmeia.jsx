@@ -55,6 +55,7 @@ export default function Colmeia({ links }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [filteredFavos, setFilteredFavos] = useState([]);
+  const [highlightedFavo, setHighlightedFavo] = useState(null);
   
   const containerRef = useRef(null);
   const searchInputRef = useRef(null);
@@ -108,6 +109,14 @@ export default function Colmeia({ links }) {
     setIsTransitioning(true);
     setSearchTerm('');
     setIsSearchOpen(false);
+
+    // Destaca o favo
+    setHighlightedFavo(favo.title);
+    
+    // Remove o destaque após 2 segundos
+    setTimeout(() => {
+      setHighlightedFavo(null);
+    }, 2000);
   };
   
   // Handler para zoom com scroll do mouse
@@ -202,6 +211,7 @@ export default function Colmeia({ links }) {
             y={favo.y}
             color={favo.color}
             image={favo.image}
+            isHighlighted={highlightedFavo === favo.title}
           />
         ))}
       </div>

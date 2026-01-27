@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Favo({ link, title, relevance, x, y, color, image }) {
+export default function Favo({ link, title, relevance, x, y, color, image, isHighlighted }) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   
@@ -61,6 +61,24 @@ export default function Favo({ link, title, relevance, x, y, color, image }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative">
+        {/* Hexágono de destaque (atrás) */}
+        {isHighlighted && (
+          <div
+            className="absolute"
+            style={{
+              width: `${size + 8}px`,
+              height: `${size + 8}px`,
+              left: '-4px',
+              top: '-4px',
+              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+              background: 'white',
+              boxShadow: '0 0 30px rgba(255, 255, 255, 0.9)',
+              animation: 'flash 2s ease-out forwards',
+              zIndex: -1
+            }}
+          />
+        )}
+
         <div
           className={`shadow-lg transition-all duration-300 ${
               isHovered ? 'shadow-2xl' : ''

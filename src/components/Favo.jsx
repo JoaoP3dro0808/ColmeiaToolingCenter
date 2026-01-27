@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Folder, FolderOpen } from 'lucide-react';
 
-export default function Favo({ link, title, relevance, x, y, color, image, isHighlighted }) {
+export default function Favo({ link, title, relevance, x, y, color, image, isHighlighted, filePath }) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   
@@ -36,20 +37,30 @@ export default function Favo({ link, title, relevance, x, y, color, image, isHig
   const colors = getColor();
   
   // Verifica se é rota interna
-  const isInternalRoute = link.startsWith('/');
+  const isInternalRoute = link && link.startsWith('/');
+  const isFilePath = !!filePath;
   
   const handleClick = (e) => {
-    if (isInternalRoute) {
+    if (isFilePath) {
+      e.preventDefault();
+      // Aqui você pode abrir um modal ou copiar o caminho
+      alert(`Caminho do arquivo: ${filePath}`);
+      // Ou navegador de arquivos, ou copiar para clipboard, etc.
+    } else if (isInternalRoute) {
       e.preventDefault();
       navigate(link);
     }
   };
+
+  const Element = isFilePath ? 'div' : 'a';
   
   return (
-    <a
-      href={isInternalRoute ? undefined : link}
-      target={isInternalRoute ? undefined : "_blank"}
-      rel={isInternalRoute ? undefined : "noopener noreferrer"}
+    <Element
+      {...(!isFilePath && {
+        href: isInternalRoute ? undefined : link,
+        target: isInternalRoute ? undefined : "_blank",
+        rel: isInternalRoute ? undefined : "noopener noreferrer"
+      })}
       onClick={handleClick}
       className="absolute transition-all duration-300 group cursor-pointer"
       style={{
@@ -92,7 +103,7 @@ export default function Favo({ link, title, relevance, x, y, color, image, isHig
         />
         
         <div
-          className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm text-center px-2"
+          className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-sm text-center px-2"
           style={{
             clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
           }}
@@ -104,7 +115,21 @@ export default function Favo({ link, title, relevance, x, y, color, image, isHig
               className="max-w-[70%] max-h-[70%] object-contain drop-shadow-md"
             />
           ) : (
-            <span className="drop-shadow-md">{title}</span>
+            <>
+              <span className="drop-shadow-md">{title}</span>
+              {isInternalRoute && (
+                <Folder 
+                  size={20} 
+                  className="mt-1 drop-shadow-md opacity-80" 
+                />
+              )}
+              {isFilePath && (
+                <FolderOpen 
+                  size={20} 
+                  className="mt-1 drop-shadow-md opacity-80" 
+                />
+              )}
+            </>
           )}
         </div>
         
@@ -117,6 +142,6 @@ export default function Favo({ link, title, relevance, x, y, color, image, isHig
           />
         )}
       </div>
-    </a>
+    </Element>
   );
 }

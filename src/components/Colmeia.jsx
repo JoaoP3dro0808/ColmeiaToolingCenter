@@ -212,6 +212,7 @@ export default function Colmeia({ links }) {
             color={favo.color}
             image={favo.image}
             isHighlighted={highlightedFavo === favo.title}
+            filePath={favo.filePath}
           />
         ))}
       </div>

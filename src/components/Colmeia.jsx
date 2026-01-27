@@ -158,6 +158,7 @@ export default function Colmeia({ links }) {
             relevance={favo.relevance}
             x={favo.x}
             y={favo.y}
+            color={favo.color}
           />
         ))}
       </div>

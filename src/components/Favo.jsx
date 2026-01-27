@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Folder, FolderOpen } from 'lucide-react';
+import FilePathModal from './FilePathModal';
 
-export default function Favo({ link, title, relevance, x, y, color, image, isHighlighted, filePath }) {
+export default function Favo({ link, title, relevance, x, y, color, image, isHighlighted, filePath, onModalChange }) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Tamanho do hexágono
   const size = 120;
@@ -43,13 +46,16 @@ export default function Favo({ link, title, relevance, x, y, color, image, isHig
   const handleClick = (e) => {
     if (isFilePath) {
       e.preventDefault();
-      // Aqui você pode abrir um modal ou copiar o caminho
-      alert(`Caminho do arquivo: ${filePath}`);
-      // Ou navegador de arquivos, ou copiar para clipboard, etc.
+      if (onModalChange) onModalChange({ isOpen: true, filePath, title }); // Passa os dados
     } else if (isInternalRoute) {
       e.preventDefault();
       navigate(link);
     }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    if (onModalChange) onModalChange(false);
   };
 
   const Element = isFilePath ? 'div' : 'a';

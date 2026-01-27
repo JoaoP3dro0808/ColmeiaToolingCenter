@@ -3,6 +3,7 @@ import Favo from './Favo';
 import logo from '../images/icon.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Home, Search, X } from 'lucide-react';
+import FilePathModal from './FilePathModal';
 
 // Função para gerar coordenadas em espiral hexagonal
 const generateHexCoordinates = (relevance) => {
@@ -59,6 +60,9 @@ export default function Colmeia({ links }) {
   
   const containerRef = useRef(null);
   const searchInputRef = useRef(null);
+
+  // Estado modal
+  const [modalData, setModalData] = useState({ isOpen: false, filePath: '', title: '' });
   
   // Ordena os links por relevância
   const sortedLinks = [...links].sort((a, b) => a.relevance - b.relevance);
@@ -131,8 +135,8 @@ export default function Colmeia({ links }) {
   
   // Handler para iniciar o drag
   const handleMouseDown = (e) => {
-    // Ignora se clicar em um link
-    if (e.target.closest('a')) return;
+    // Ignora se clicar em um link ou se o modal está aberto
+    if (e.target.closest('a') || modalData.isOpen) return;
     
     setIsDragging(true);
     setIsTransitioning(false);
@@ -213,6 +217,7 @@ export default function Colmeia({ links }) {
             image={favo.image}
             isHighlighted={highlightedFavo === favo.title}
             filePath={favo.filePath}
+            onModalChange={setModalData}
           />
         ))}
       </div>
@@ -319,6 +324,14 @@ export default function Colmeia({ links }) {
           ⟲
         </button>
       </div>
+
+      {/* Modal - FORA do container transformado */}
+      <FilePathModal
+        isOpen={modalData.isOpen}
+        onClose={() => setModalData({ isOpen: false, filePath: '', title: '' })}
+        filePath={modalData.filePath}
+        title={modalData.title}
+      />
     </div>
   );
 }

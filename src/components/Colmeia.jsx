@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Favo from './Favo';
 import logo from '../images/icon.png';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home } from 'lucide-react';
+import { Home, Search, X } from 'lucide-react';
 
 // Função para gerar coordenadas em espiral hexagonal
 const generateHexCoordinates = (relevance) => {
@@ -51,7 +51,13 @@ export default function Colmeia({ links }) {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isTransitioning, setIsTransitioning] = useState(true);
   
+  // Estados para pesquisa
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [filteredFavos, setFilteredFavos] = useState([]);
+  
   const containerRef = useRef(null);
+  const searchInputRef = useRef(null);
   
   // Ordena os links por relevância
   const sortedLinks = [...links].sort((a, b) => a.relevance - b.relevance);
@@ -67,6 +73,42 @@ export default function Colmeia({ links }) {
       ...coords,
     };
   });
+  
+  // Atualiza resultados da pesquisa
+  useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setFilteredFavos([]);
+    } else {
+      const filtered = favos.filter(favo =>
+        favo.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredFavos(filtered);
+    }
+  }, [searchTerm]);
+  
+  // Foca no input quando abre a pesquisa
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isSearchOpen]);
+  
+  // Função para centralizar em um favo
+  const focusOnFavo = (favo) => {
+    const size = 120;
+    const gap = 12;
+    const spacingX = size + gap;
+    const spacingY = (size + gap) * 0.866;
+    
+    const posX = favo.x * spacingX + (favo.y % 2) * (spacingX / 2);
+    const posY = favo.y * spacingY * 0.866;
+    
+    setPosition({ x: -posX, y: -posY });
+    setScale(1.5);
+    setIsTransitioning(true);
+    setSearchTerm('');
+    setIsSearchOpen(false);
+  };
   
   // Handler para zoom com scroll do mouse
   const handleWheel = (e) => {
@@ -84,7 +126,7 @@ export default function Colmeia({ links }) {
     if (e.target.closest('a')) return;
     
     setIsDragging(true);
-    setIsTransitioning(false); // Desativa transição durante drag
+    setIsTransitioning(false);
     setDragStart({
       x: e.clientX - position.x,
       y: e.clientY - position.y
@@ -104,7 +146,7 @@ export default function Colmeia({ links }) {
   // Handler para parar o drag
   const handleMouseUp = () => {
     setIsDragging(false);
-    setIsTransitioning(true); // Reativa transição após drag
+    setIsTransitioning(true);
   };
   
   // Adiciona listeners globais para mouse
@@ -169,16 +211,74 @@ export default function Colmeia({ links }) {
         <img src={logo} alt="Logo" className="w-38 h-27.6 drop-shadow-lg" />
       </div>
 
-      {/* Botão Home */}
-      {!isHomePage && (
-        <button
-          onClick={() => navigate('/')}
-          className="absolute top-8 right-8 bg-gradient-to-br from-teal-600 to-teal-800 hover:from-teal-500 hover:to-teal-700 text-white p-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 z-10"
-          aria-label="Voltar para Home"
-        >
-          <Home size={24} />
-        </button>
-      )}
+      {/* Barra de Pesquisa */}
+      <div className="absolute top-8 right-8 z-10 flex items-start gap-2">
+        {isSearchOpen ? (
+          <div className="relative">
+            <div className="flex items-center gap-2 bg-gradient-to-br from-teal-600 to-teal-800 rounded-full shadow-lg px-4 py-2">
+              <Search size={20} className="text-white" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Buscar favo..."
+                className="bg-transparent text-white placeholder-teal-200 outline-none w-48"
+              />
+              <button
+                onClick={() => {
+                  setIsSearchOpen(false);
+                  setSearchTerm('');
+                }}
+                className="text-white hover:text-teal-200 transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            {/* Resultados da pesquisa */}
+            {filteredFavos.length > 0 && (
+              <div className="absolute top-full mt-2 right-0 bg-gradient-to-br from-teal-700 to-teal-900 rounded-lg shadow-2xl overflow-hidden min-w-[250px] max-h-[300px] overflow-y-auto">
+                {filteredFavos.map((favo, index) => (
+                  <button
+                    key={index}
+                    onClick={() => focusOnFavo(favo)}
+                    className="w-full text-left px-4 py-3 text-white hover:bg-teal-600 transition-colors border-b border-teal-600 last:border-b-0"
+                  >
+                    {favo.title}
+                  </button>
+                ))}
+              </div>
+            )}
+            
+            {/* Mensagem de nenhum resultado */}
+            {searchTerm && filteredFavos.length === 0 && (
+              <div className="absolute top-full mt-2 right-0 bg-gradient-to-br from-teal-700 to-teal-900 rounded-lg shadow-2xl px-4 py-3 text-white min-w-[250px]">
+                Nenhum favo encontrado
+              </div>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="bg-gradient-to-br from-teal-600 to-teal-800 hover:from-teal-500 hover:to-teal-700 text-white p-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110"
+            aria-label="Pesquisar"
+          >
+            <Search size={24} />
+          </button>
+        )}
+        
+        {/* Botão Home */}
+        {!isHomePage && (
+          <button
+            onClick={() => navigate('/')}
+            className="bg-gradient-to-br from-teal-600 to-teal-800 hover:from-teal-500 hover:to-teal-700 text-white p-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110"
+            aria-label="Voltar para Home"
+          >
+            <Home size={24} />
+          </button>
+        )}
+      </div>
       
       {/* Controles de Zoom */}
       <div className="absolute bottom-8 right-8 flex flex-col gap-2 z-10">

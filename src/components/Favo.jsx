@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Favo({ link, title, relevance, x, y, color }) {
+export default function Favo({ link, title, relevance, x, y, color, image }) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   
@@ -79,7 +79,15 @@ export default function Favo({ link, title, relevance, x, y, color }) {
             clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
           }}
         >
-          <span className="drop-shadow-md">{title}</span>
+          {image ? (
+            <img 
+              src={image} 
+              alt={title} 
+              className="max-w-[70%] max-h-[70%] object-contain drop-shadow-md"
+            />
+          ) : (
+            <span className="drop-shadow-md">{title}</span>
+          )}
         </div>
         
         {isHovered && (

@@ -25,7 +25,7 @@ export default function Home() {
     { title: 'Volume de Produção', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/310029bc-065d-4ce2-b725-7cb9f913fe68/ReportSection?experience=power-bi', relevance: 2 },
     { title: 'Turnover Health', filePath: 'S:/TEC/Technical_Function/1.1.Process_Develop_Tools/03.Shared/01.Process_Development/GD/02_Atividades em andamento/João Klippel/TurnoverHealth.pbix', relevance: 2 },
     { title: 'Calendário', link: '/calendar', relevance: 5 },
-    { title: 'Dashboard - Dias de Afiação', filePath: 'S:/TEC/Technical_Function/1.1.Process_Develop_Tools/03.Shared/02.Tooling_Center/01.Logistica/3. Ferramentas para Afiação/Lista Lotes de Afiação/Desenvolvimento/Dashboard - CargaMáquina.lnk', relevance: 3, color: { from: '#ffcbacff', to: '#ee6c02ff' } },
+    { title: 'Dashboard - Dias de Afiação', filePath: 'S:/TEC/Technical_Function/1.1.Process_Develop_Tools/03.Shared/02.Tooling_Center/01.Logistica/3. Ferramentas para Afiação/Lista Lotes de Afiação/Desenvolvimento/Dashboard - CargaMáquina.lnk', relevance: 3 },
 ];
   
   return <Colmeia links={meusLinks} />;

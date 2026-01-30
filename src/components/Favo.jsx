@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Folder, FolderOpen } from 'lucide-react';
+import { Folder, FolderOpen, SquareChevronRight  } from 'lucide-react';
 import FilePathModal from './FilePathModal';
 
 export default function Favo({ link, title, relevance, x, y, color, image, isHighlighted, filePath, onModalChange }) {
@@ -124,7 +124,7 @@ export default function Favo({ link, title, relevance, x, y, color, image, isHig
             <>
               <span className="drop-shadow-md">{title}</span>
               {isInternalRoute && (
-                <Folder 
+                <SquareChevronRight  
                   size={20} 
                   className="mt-1 drop-shadow-md opacity-80" 
                 />

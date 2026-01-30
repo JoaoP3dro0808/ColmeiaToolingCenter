@@ -27,7 +27,12 @@ export default function Home() {
     { title: 'Calendário', link: '/calendar', relevance: 5 },
     { title: 'Dashboard - Dias de Afiação', filePath: 'S:/TEC/Technical_Function/1.1.Process_Develop_Tools/03.Shared/02.Tooling_Center/01.Logistica/3. Ferramentas para Afiação/Lista Lotes de Afiação/Desenvolvimento/Dashboard - CargaMáquina.lnk', relevance: 3 },
     { title: 'Reclamações de Qualidade', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/00e28cfd-7b16-4b86-9c42-ffc3a8a6e6d6/ReportSection?experience=power-bi', relevance: 2 },
-    { title: 'Desempenho de Ferramentas', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/f31b6875-7775-47a0-af45-43b3b9ad33b2/ReportSection?experience=power-bi', relevance: 1 }
+    { title: 'Desempenho de Ferramentas', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/f31b6875-7775-47a0-af45-43b3b9ad33b2/ReportSection?experience=power-bi', relevance: 1 },
+    { title: 'AM - Virtual', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/2f2e17ee-1076-4dbb-8687-5ce130fc46df/5ad4fe5b5aec4c11314c?experience=power-bi', relevance: 3 },
+    { title: 'Apontamentos Brunimento', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/2f2e17ee-1076-4dbb-8687-5ce130fc46df/5ad4fe5b5aec4c11314c?experience=power-bi', relevance: 4 },
+    { title: 'Apontamentos Troca de Rebolo', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/49518116-abb5-436e-91b2-ec4510811340/1b8c4d1f057e17d01303?experience=power-bi', relevance: 4 },
+    { title: 'Desempenho Brunimento', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/6d3c3a6f-d22b-45dc-9ec1-ddde744333c3/ReportSection3338a8b7736060f7cd76?experience=power-bi', relevance: 3 },
+    
   ];
   
   return <Colmeia links={meusLinks} />;

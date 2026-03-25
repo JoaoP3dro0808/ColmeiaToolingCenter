@@ -32,7 +32,7 @@ export default function Home() {
     { title: 'Apontamentos Brunimento', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/2f2e17ee-1076-4dbb-8687-5ce130fc46df/5ad4fe5b5aec4c11314c?experience=power-bi', relevance: 4 },
     { title: 'Apontamentos Troca de Rebolo', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/49518116-abb5-436e-91b2-ec4510811340/1b8c4d1f057e17d01303?experience=power-bi', relevance: 4 },
     { title: 'Desempenho Brunimento', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/6d3c3a6f-d22b-45dc-9ec1-ddde744333c3/ReportSection3338a8b7736060f7cd76?experience=power-bi', relevance: 3 },
-    { title: 'SavingHometro Fabricação', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/c3fad5e1-f498-4ba5-ab97-5d3a06b86e5b?experience=power-bi', relevance: 2 }
+    { title: 'SavingHometro Fabricação', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/c3fad5e1-f498-4ba5-ab97-5d3a06b86e5b/5302010c097ae9bf3b48?experience=power-bi', relevance: 2 },
   ];
   
   return <Colmeia links={meusLinks} />;

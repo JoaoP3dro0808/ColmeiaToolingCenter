@@ -33,6 +33,7 @@ export default function Home() {
     { title: 'Apontamentos Troca de Rebolo', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/49518116-abb5-436e-91b2-ec4510811340/1b8c4d1f057e17d01303?experience=power-bi', relevance: 4 },
     { title: 'Desempenho Brunimento', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/6d3c3a6f-d22b-45dc-9ec1-ddde744333c3/ReportSection3338a8b7736060f7cd76?experience=power-bi', relevance: 3 },
     { title: 'SavingHometro Fabricação', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/c3fad5e1-f498-4ba5-ab97-5d3a06b86e5b/5302010c097ae9bf3b48?experience=power-bi', relevance: 2 },
+    { title: 'Alertas de Qualidade - PDFs', link: 'https://bosch-my.sharepoint.com/:f:/r/personal/klj1ct_bosch_com/Documents/Alertas%20de%20Qualidade%20-%20PDF%27s?csf=1&web=1&e=rHJ0nx', relevance: 3 }
   ];
   
   return <Colmeia links={meusLinks} />;

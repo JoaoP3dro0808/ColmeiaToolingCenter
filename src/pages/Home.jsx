@@ -33,7 +33,8 @@ export default function Home() {
     { title: 'Apontamentos Troca de Rebolo', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/49518116-abb5-436e-91b2-ec4510811340/1b8c4d1f057e17d01303?experience=power-bi', relevance: 4 },
     { title: 'Desempenho Brunimento', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/6d3c3a6f-d22b-45dc-9ec1-ddde744333c3/ReportSection3338a8b7736060f7cd76?experience=power-bi', relevance: 3 },
     { title: 'SavingHometro Fabricação', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/c3fad5e1-f498-4ba5-ab97-5d3a06b86e5b/5302010c097ae9bf3b48?experience=power-bi', relevance: 2 },
-    { title: 'Alertas de Qualidade - PDFs', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/c35436f5-bc71-4387-bf06-8973f91f8fae/3ad3b2f0a9b95ab33e93?experience=power-bi', relevance: 2,  color: { from: '#a000d1ff', to: '#400053ff' }}
+    { title: 'Alertas de Qualidade - PDFs', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/c35436f5-bc71-4387-bf06-8973f91f8fae/3ad3b2f0a9b95ab33e93?experience=power-bi', relevance: 2,  color: { from: '#a000d1ff', to: '#400053ff' }},
+    { title: 'Andon - Output Minutos', link: 'https://app.powerbi.com/groups/26c107da-94ff-4b8f-9de4-1da4f23fea94/reports/044f2446-21a7-4969-9cab-394badbdcc17/f04a858528833eb0b60a?experience=power-bi', relevance: 3,  color: { from: '#21d3ebff', to: '#21d4eb5d' }}
   ];
   
   return <Colmeia links={meusLinks} />;

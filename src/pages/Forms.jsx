@@ -9,7 +9,7 @@ export default function Forms() {
     { title: 'Mod. AM Drag Finishing', link: 'https://forms.cloud.microsoft/e/E8cGTuFwnx?embed=true', relevance: 1 },
     { title: 'Mod. AM - Fabricação', link: 'https://forms.cloud.microsoft/e/VtcyZkARf2?embed=true', relevance: 1 },
     { title: 'Mod. AM - Preset', link: 'https://forms.cloud.microsoft/e/ZDLhE0LqAu?embed=true', relevance: 1 },
-    { title: 'Modificação de Desenho', link: 'https://forms.cloud.microsoft/e/RJZD1WTRSN?embed=true', relevance: 1 },
+    { title: 'Modificação de Desenho', link: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=GR7lCsgHS067bWSO5YQQ9CU1DYw7Li5Ahokg7duEr1pUOVlSWVY3MlJMMU5QSDhYTFY0VTZFQU4wUC4u', relevance: 1 },
     { title: 'Requisição de suporte 5s', link: 'https://forms.cloud.microsoft/e/NLvEQSUHet?embed=true', relevance: 1, color: { from: 'rgb(255, 72, 81)', to: 'rgb(143, 40, 49)' } },
   ];
   
